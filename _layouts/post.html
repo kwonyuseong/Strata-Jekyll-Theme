@@ -8,10 +8,26 @@ layout: default
       <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
     </header>
 
+    <!-- 태그기능 추가-->
+      {% include post_tags.html %}
+    <br>
+    <!-- facebook javascript SDK  -->
+    <div id="fb-root"></div>
+			<script>(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=352618695208926';
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- ******************** contents ********************* -->
     <section>
       {{ content }}
     </section>
 
+    <!-- facebook comments -->
+      <div class="fb-comments" data-href="https://kwonyuseong.github.io{{ page.url }}" data-width="100%" data-numposts="5"></div>
     <footer>
       <div class="row">
       {% if page.previous %}
@@ -19,14 +35,14 @@ layout: default
           <header>
             <h2><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></h2>
           </header>
-          <section>
+          <!-- <section>
             {{ page.previous.excerpt }}
           </section>
           <footer>
             <ul class="actions">
               <li><a href="{{ page.previous.url }}" class="button">Read More</a></li>
             </ul>
-          </footer>
+          </footer> -->
         </article>
       {% endif %}
 
@@ -35,16 +51,17 @@ layout: default
           <header>
             <h2><a href="{{ page.next.url }}">{{ page.next.title }}</a></h2>
           </header>
-          <section>
+          <!-- <section>
             {{ page.next.excerpt | markdownify }}
           </section>
           <footer>
             <ul class="actions">
               <li><a href="{{ page.next.url }}" class="button">Read More</a></li>
             </ul>
-          </footer>
+          </footer> -->
         </article>
       {% endif %}
+
       </div>
     </footer>
   </article>
